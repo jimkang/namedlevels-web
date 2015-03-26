@@ -1,18 +1,24 @@
 body {
-  font-family: "helvetica neue";
+  font-family: futura, 'helvetica neue', 'sans-serif';
 }
 
-#board {
-  width: 100%;
-  min-height: 640px;
+#root {
+  padding-left: 0;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;  
 }
 
-.floor-cell {
-  stroke: none;
-  fill: hsl(150, 50%, 80%);
+#level-name-root {
+  flex: 2 0 90%;
+  min-width: 200px;
+
+  /*display: flex;*/
+  /*flex-wrap: wrap;*/
+  /*flex-direction: row;*/
 }
 
-.guy-cell {
-  stroke: none;
-  fill: hsl(30, 50%, 50%);
+#level-number-root {
+  flex: 0 0 10%;
+  min-width: 44px;
 }
