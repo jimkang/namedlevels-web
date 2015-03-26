@@ -1,4 +1,5 @@
 D3SRC = node_modules/d3/src
+MYTH = node_modules/.bin/myth
 
 D3_LIBRARY_FILES = \
 	$(D3SRC)/start.js \
@@ -16,7 +17,7 @@ smash: $(D3_LIBRARY_FILES)
 smash-debug: $(D3_LIBRARY_FILES)
 	node_modules/.bin/smash $(D3_LIBRARY_FILES) > lib/d3-small.js
 
-run:
+run: css
 	wzrd index.js -- \
 		-d \
 		-x idmaker \
@@ -28,3 +29,6 @@ pch: smash # smash-debug
 		-r idmaker \
 		-r lodash \
 		-o pch.js
+
+css:
+	$(MYTH) namedlevels_src.css namedlevels.css
