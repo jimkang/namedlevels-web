@@ -1,5 +1,7 @@
 D3SRC = node_modules/d3/src
 MYTH = node_modules/.bin/myth
+BROWSERIFY = node_modules/.bin/browserify
+UGLIFY = node_modules/.bin/uglifyjs
 
 D3_LIBRARY_FILES = \
 	$(D3SRC)/start.js \
@@ -21,14 +23,31 @@ run: css
 	wzrd index.js -- \
 		-d \
 		-x idmaker \
-		-x lodash
+		-x lodash \
+		-x page \
+		-x basic-browser-request
 
 pch: smash # smash-debug
 	node_modules/.bin/browserify \
 		lib/d3-small.js \
 		-r idmaker \
 		-r lodash \
+		-r page \
+		-r basic-browser-request \
 		-o pch.js
+
+build: smash
+	$(BROWSERIFY) index.js | $(UGLIFY) -c -m -o namedlevels.js
 
 css:
 	$(MYTH) namedlevels_src.css namedlevels.css
+
+DEVTAGS = <script\ src="pch.js"><\/script><script\ src="index.js"><\/script>
+PRODUCTIONTAGS = <script\ src="namedlevels.js"><\/script>
+
+switch-index-to-dev:
+	sed 's/$(PRODUCTIONTAGS)/$(DEVTAGS)/' index.html | tee index.html
+
+switch-index-to-production:
+	sed 's/$(DEVTAGS)/$(PRODUCTIONTAGS)/' index.html | tee index.html
+

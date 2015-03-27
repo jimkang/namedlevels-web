@@ -1,3 +1,5 @@
+var d3 = require('./lib/d3-small');
+
 function render(classProfile) {
   var root = d3.select('#root');
 
