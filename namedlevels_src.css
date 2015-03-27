@@ -37,6 +37,11 @@ body {
   text-align: center;
 }
 
+.fade-out {
+  transition: opacity 0.5s;
+  opacity: 0;
+}
+
 @media all and (max-width: 586px) {
 
 }
