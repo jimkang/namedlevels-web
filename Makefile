@@ -24,7 +24,6 @@ run: css
 		-d \
 		-x idmaker \
 		-x lodash \
-		-x page \
 		-x basic-browser-request
 
 pch: smash # smash-debug
@@ -32,7 +31,6 @@ pch: smash # smash-debug
 		lib/d3-small.js \
 		-r idmaker \
 		-r lodash \
-		-r page \
 		-r basic-browser-request \
 		-o pch.js
 

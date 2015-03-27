@@ -1,28 +1,28 @@
-var page = require('page');
 var makeRequest = require('basic-browser-request');
 var renderer = require('./renderer');
+var createRouter = require('./router').create;
 
 var baseAPIURL = 'http://192.241.250.38:8080/';
 // var baseAPIURL = 'http://localhost:8080/';
 
-// For production:
-// page.base('/namedlevels');
-
-page('/', index);
-page('/class/:base', getClass);
-page({
-  hashbang:true
+var router = createRouter({
+  routes: {
+    class: getClass,
+    defaultResponder: index
+  }
 });
+
+router.route();
 
 function index() {
   console.log('Index!');
 }
 
-function getClass(ctx) {
-  console.log('Class', ctx.params.base || '');
+function getClass(base) {
+  console.log('Class', base || '');
   makeRequest(
     {
-      url: baseAPIURL + 'class/' + ctx.params.base,
+      url: baseAPIURL + 'class/' + base,
       method: 'GET'
     },
     renderClass
@@ -38,4 +38,3 @@ function renderClass(error, classProfile) {
     renderer.render(classProfile);
   }
 }
-
