@@ -20,6 +20,16 @@ function render(classProfile) {
     dataClass: 'hit-dice',
     data: d3.range(1, classProfile.levelNames.length + 1)
   });
+
+  renderColumnData({
+    rootName: 'levelNumberRoot',
+    columnId: 'level-number-root',
+    columnClass: 'level-number-column',
+    headerText: 'Experience Level',
+    dataClass: 'level-number',
+    data: d3.range(1, classProfile.levelNames.length + 1)
+  });
+
 }
 
 function renderLevelNames(classProfile) {
@@ -49,6 +59,7 @@ function renderColumnData(opts) {
   var data;
 
   if (opts) {
+    rootName = opts.rootName;
     columnId = opts.columnId;
     columnClass = opts.columnClass;
     headerText = opts.headerText;
@@ -76,16 +87,6 @@ function renderColumnData(opts) {
   dataElements.text(identity);
 }
 
-function renderLevelNumbers(classProfile) {
-  if (!levelNumberRoot) {
-    levelNumberRoot = root.append('div')
-      .attr('id', 'level-number-root')
-      .classed('level-number-column', true)
-      .classed('centered-text', true);
-
-  }
-}
-
 function appendColumnHeader(columnRoot) {
   columnRoot
     .append('div').classed('column-header', true)
@@ -101,7 +102,6 @@ function fadeAndRemove(selection) {
     .classed('fade-out', true)
     .transition().delay(500)
     .remove();
-
 }
 
 module.exports = {

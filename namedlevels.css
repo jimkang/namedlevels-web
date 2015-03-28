@@ -31,15 +31,25 @@ body {
   -ms-flex: 2 0 12em;
   flex: 2 0 12em;
   min-width: 200px;
-  -webkit-order: 2;
-  -ms-flex-order: 2;
-  order: 2;
+  -webkit-order: 3;
+  -ms-flex-order: 3;
+  order: 3;
   /*display: flex;*/
   /*flex-wrap: wrap;*/
   /*flex-direction: row;*/
 }
 
 .hit-dice-column {
+  -webkit-flex: 0 0 5.5em;
+  -ms-flex: 0 0 5.5em;
+  flex: 0 0 5.5em;
+  -webkit-order: 2;
+  -ms-flex-order: 2;
+  order: 2;
+  padding-right: 1em;
+}
+
+.level-number-column {
   -webkit-flex: 0 0 5.5em;
   -ms-flex: 0 0 5.5em;
   flex: 0 0 5.5em;
