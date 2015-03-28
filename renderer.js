@@ -10,7 +10,15 @@ function render(classProfile) {
     root = d3.select('#root');
   }
 
-  renderLevelNames(classProfile);
+  renderColumnData({
+    rootName: 'levelNameRoot',
+    columnId: 'level-name-root',
+    columnClass: 'name-column',
+    headerText: 'Level Title',
+    dataClass: 'level-name',
+    data: classProfile.levelNames,
+    centerText: false
+  });
 
   renderColumnData({
     rootName: 'hitDiceRoot',
@@ -32,24 +40,6 @@ function render(classProfile) {
 
 }
 
-function renderLevelNames(classProfile) {
-  if (!columnRoots.levelNameRoot) {
-    columnRoots.levelNameRoot = root.append('div')
-      .attr('id', 'level-name-root')
-      .classed('name-column', true);
-
-    appendColumnHeader(columnRoots.levelNameRoot, 'Level Title');
-  }
-
-  var levelNames = columnRoots.levelNameRoot.selectAll('.level-name')
-    .data(classProfile.levelNames);
-  levelNames.enter().append('div').classed('level-name', true);
-
-  fadeAndRemove(levelNames.exit());
-
-  levelNames.text(identity);
-}
-
 function renderColumnData(opts) {
   var rootName;
   var columnId;
@@ -57,6 +47,7 @@ function renderColumnData(opts) {
   var headerText;
   var dataClass;
   var data;
+  var centerText = true;
 
   if (opts) {
     rootName = opts.rootName;
@@ -65,13 +56,20 @@ function renderColumnData(opts) {
     headerText = opts.headerText;
     dataClass = opts.dataClass;
     data = opts.data;
+    if ('centerText' in opts) {
+      centerText = opts.centerText;
+    }
   }
 
   var columnRoot = columnRoots[rootName];
 
   if (!columnRoot) {
     columnRoot = root.append('div').attr('id', columnId)
-      .classed(columnClass, true).classed('centered-text', true);
+      .classed(columnClass, true);
+
+    if (centerText) {
+      columnRoot.classed('centered-text', true);
+    }
 
     appendColumnHeader(columnRoot, headerText);
     columnRoots[rootName] = columnRoot;
