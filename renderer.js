@@ -1,11 +1,20 @@
 var d3 = require('./lib/d3-small');
 
+var root;
 var levelNameRoot;
+var hitDiceRoot;
 var levelNumberRoot;
 
 function render(classProfile) {
-  var root = d3.select('#root');
+  if (!root) {
+    root = d3.select('#root');
+  }
 
+  renderLevelNames(classProfile);
+  renderHitDice(classProfile);
+}
+
+function renderLevelNames(classProfile) {
   if (!levelNameRoot) {
     levelNameRoot = root.append('div')
       .attr('id', 'level-name-root')
@@ -14,7 +23,6 @@ function render(classProfile) {
     appendColumnHeader(levelNameRoot, 'Level Title');
   }
 
-
   var levelNames = levelNameRoot.selectAll('.level-name')
     .data(classProfile.levelNames);
   levelNames.enter().append('div').classed('level-name', true);
@@ -22,27 +30,39 @@ function render(classProfile) {
   fadeAndRemove(levelNames.exit());
 
   levelNames.text(identity);
+}
 
+function renderHitDice(classProfile) {
+  if (!hitDiceRoot) {
+    hitDiceRoot = root.append('div')
+      .attr('id', 'hit-dice-root')
+      .classed('hit-dice-column', true)
+      .classed('centered-text', true);
+
+    appendColumnHeader(
+      hitDiceRoot, 
+      classProfile.hitDie + '-Sided Dice for Accumulated Hit Points'
+    );
+  }
+
+  var levelNumberData = d3.range(1, classProfile.levelNames.length + 1);
+  var levelNumbers = hitDiceRoot.selectAll('.hit-dice')
+    .data(levelNumberData);
+  levelNumbers.enter().append('div').classed('hit-dice', true);
+
+  fadeAndRemove(levelNumbers.exit());
+
+  levelNumbers.text(identity);
+}
+
+function renderLevelNumbers(classProfile) {
   if (!levelNumberRoot) {
     levelNumberRoot = root.append('div')
       .attr('id', 'level-number-root')
       .classed('level-number-column', true)
       .classed('centered-text', true);
 
-    appendColumnHeader(
-      levelNumberRoot, 
-      classProfile.hitDie + '-Sided Dice for Accumulated Hit Points'
-    );
   }
-
-  var levelNumberData = d3.range(1, classProfile.levelNames.length + 1);
-  var levelNumbers = levelNumberRoot.selectAll('.level-number')
-    .data(levelNumberData);
-  levelNumbers.enter().append('div').classed('level-number', true);
-
-  fadeAndRemove(levelNumbers.exit());
-
-  levelNumbers.text(identity);
 }
 
 function appendColumnHeader(columnRoot, text, innerClass) {

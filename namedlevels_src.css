@@ -19,7 +19,7 @@ body {
   /*flex-direction: row;*/
 }
 
-.level-number-column {
+.hit-dice-column {
   flex: 0 0 5.5em;
   order: 1;
   padding-right: 1em;
@@ -40,6 +40,15 @@ body {
 .fade-out {
   transition: opacity 0.5s;
   opacity: 0;
+}
+
+.transparent {
+  opacity: 0;
+}
+
+.fade-in {
+  opacity: 1;
+  transition: opacity 1s;  
 }
 
 @media all and (max-width: 586px) {
