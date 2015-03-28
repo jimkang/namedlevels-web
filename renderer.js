@@ -1,29 +1,37 @@
 var d3 = require('./lib/d3-small');
 
 var root;
-var levelNameRoot;
-var hitDiceRoot;
-var levelNumberRoot;
+var columnRoots = {};
 
 function render(classProfile) {
+  d3.select('#title').text(classProfile.className + ' TABLE');
+
   if (!root) {
     root = d3.select('#root');
   }
 
   renderLevelNames(classProfile);
-  renderHitDice(classProfile);
+
+  renderColumnData({
+    rootName: 'hitDiceRoot',
+    columnId: 'hit-dice-root',
+    columnClass: 'hit-dice-column',
+    headerText: classProfile.hitDie + '-Sided Dice for Accumulated Hit Points',
+    dataClass: 'hit-dice',
+    data: d3.range(1, classProfile.levelNames.length + 1)
+  });
 }
 
 function renderLevelNames(classProfile) {
-  if (!levelNameRoot) {
-    levelNameRoot = root.append('div')
+  if (!columnRoots.levelNameRoot) {
+    columnRoots.levelNameRoot = root.append('div')
       .attr('id', 'level-name-root')
       .classed('name-column', true);
 
-    appendColumnHeader(levelNameRoot, 'Level Title');
+    appendColumnHeader(columnRoots.levelNameRoot, 'Level Title');
   }
 
-  var levelNames = levelNameRoot.selectAll('.level-name')
+  var levelNames = columnRoots.levelNameRoot.selectAll('.level-name')
     .data(classProfile.levelNames);
   levelNames.enter().append('div').classed('level-name', true);
 
@@ -32,27 +40,40 @@ function renderLevelNames(classProfile) {
   levelNames.text(identity);
 }
 
-function renderHitDice(classProfile) {
-  if (!hitDiceRoot) {
-    hitDiceRoot = root.append('div')
-      .attr('id', 'hit-dice-root')
-      .classed('hit-dice-column', true)
-      .classed('centered-text', true);
+function renderColumnData(opts) {
+  var rootName;
+  var columnId;
+  var columnClass;
+  var headerText;
+  var dataClass;
+  var data;
 
-    appendColumnHeader(
-      hitDiceRoot, 
-      classProfile.hitDie + '-Sided Dice for Accumulated Hit Points'
-    );
+  if (opts) {
+    columnId = opts.columnId;
+    columnClass = opts.columnClass;
+    headerText = opts.headerText;
+    dataClass = opts.dataClass;
+    data = opts.data;
   }
 
-  var levelNumberData = d3.range(1, classProfile.levelNames.length + 1);
-  var levelNumbers = hitDiceRoot.selectAll('.hit-dice')
-    .data(levelNumberData);
-  levelNumbers.enter().append('div').classed('hit-dice', true);
+  var columnRoot = columnRoots[rootName];
 
-  fadeAndRemove(levelNumbers.exit());
+  if (!columnRoot) {
+    columnRoot = root.append('div').attr('id', columnId)
+      .classed(columnClass, true).classed('centered-text', true);
 
-  levelNumbers.text(identity);
+    appendColumnHeader(columnRoot, headerText);
+    columnRoots[rootName] = columnRoot;
+  }
+
+  columnRoot.select('.inner-header').text(headerText);
+
+  var dataElements = columnRoot.selectAll('.' + dataClass).data(data);
+  dataElements.enter().append('div').classed(dataClass, true);
+
+  fadeAndRemove(dataElements.exit());
+
+  dataElements.text(identity);
 }
 
 function renderLevelNumbers(classProfile) {
@@ -65,11 +86,10 @@ function renderLevelNumbers(classProfile) {
   }
 }
 
-function appendColumnHeader(columnRoot, text, innerClass) {
+function appendColumnHeader(columnRoot) {
   columnRoot
     .append('div').classed('column-header', true)
-    .append('div').classed('inner-header', true)
-    .text(text);  
+    .append('div').classed('inner-header', true);
 }
 
 function identity(d) {

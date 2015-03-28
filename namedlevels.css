@@ -1,7 +1,12 @@
 body {
   font-family: futura, 'helvetica neue', 'sans-serif';
-  background-color: hsl(35, 10%, 90%);
+  background-color: hsl(35, 10%, 97%);
   color: hsl(0, 0%, 18%);
+  margin: 1em;
+}
+
+#title {
+  text-transform: uppercase;
 }
 
 #root {
