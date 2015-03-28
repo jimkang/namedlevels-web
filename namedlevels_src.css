@@ -1,12 +1,18 @@
 body {
   font-family: futura, 'helvetica neue', 'sans-serif';
+  background-color: hsl(35, 10%, 97%);
+  color: hsl(0, 0%, 18%);
 }
 
 #root {
   padding-left: 0;
   display: flex;
   flex-wrap: wrap;
-  flex-direction: row;  
+  flex-direction: row;
+}
+
+.level-table {
+  text-shadow: white 1px 1px;
 }
 
 .name-column {

@@ -1,5 +1,7 @@
 body {
   font-family: futura, 'helvetica neue', 'sans-serif';
+  background-color: hsl(35, 10%, 90%);
+  color: hsl(0, 0%, 18%);
 }
 
 #root {
@@ -13,6 +15,10 @@ body {
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
+}
+
+.level-table {
+  text-shadow: white 1px 1px;
 }
 
 .name-column {
