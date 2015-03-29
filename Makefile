@@ -49,3 +49,5 @@ switch-index-to-dev:
 switch-index-to-production:
 	sed 's/$(DEVTAGS)/$(PRODUCTIONTAGS)/' index.html | tee index.html
 
+test:
+	node tests/profile-to-rows-tests.js
