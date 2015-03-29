@@ -34,9 +34,6 @@ body {
   -webkit-order: 3;
   -ms-flex-order: 3;
   order: 3;
-  /*display: flex;*/
-  /*flex-wrap: wrap;*/
-  /*flex-direction: row;*/
 }
 
 .hit-dice-column {
@@ -92,5 +89,22 @@ body {
 }
 
 @media all and (max-width: 586px) {
+  .column-header {
+    max-height: 1em;
+    min-height: 1em;
+  }
 
+  .hit-dice-column {
+    display: none;
+  }
+
+  .level-number-column .column-header {
+    opacity: 0;
+  }
+
+  .level-number-column {
+    -webkit-flex: 0 1 1em;
+    -ms-flex: 0 1 1em;
+    flex: 0 1 1em;
+  }
 }

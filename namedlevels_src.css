@@ -24,10 +24,6 @@ body {
   flex: 2 0 12em;
   min-width: 200px;
   order: 3;
-
-  /*display: flex;*/
-  /*flex-wrap: wrap;*/
-  /*flex-direction: row;*/
 }
 
 .hit-dice-column {
@@ -69,5 +65,20 @@ body {
 }
 
 @media all and (max-width: 586px) {
+  .column-header {
+    max-height: 1em;
+    min-height: 1em;
+  }
 
+  .hit-dice-column {
+    display: none;
+  }
+
+  .level-number-column .column-header {
+    opacity: 0;
+  }
+
+  .level-number-column {
+    flex: 0 1 1em;
+  }
 }
