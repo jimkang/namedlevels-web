@@ -11,6 +11,13 @@ body {
 
 #root {
   padding-left: 0;
+}
+
+.level-table {
+  text-shadow: white 1px 1px;
+}
+
+.row {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -20,10 +27,6 @@ body {
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
-}
-
-.level-table {
-  text-shadow: white 1px 1px;
 }
 
 .name-column {
@@ -44,6 +47,7 @@ body {
   -ms-flex-order: 2;
   order: 2;
   padding-right: 1em;
+  text-align: center;
 }
 
 .level-number-column {
@@ -54,6 +58,7 @@ body {
   -ms-flex-order: 1;
   order: 1;
   padding-right: 1em;
+  text-align: center;
 }
 
 .column-header {
@@ -88,6 +93,14 @@ body {
   transition: opacity 1s;
 }
 
+.full-header-text {
+  display: inherit;
+}
+
+.short-header-text {
+  display: none;
+}
+
 @media all and (max-width: 586px) {
   .column-header {
     max-height: 1em;
@@ -103,8 +116,16 @@ body {
   }
 
   .level-number-column {
-    -webkit-flex: 0 1 1em;
-    -ms-flex: 0 1 1em;
-    flex: 0 1 1em;
+    -webkit-flex: 0 1 2em;
+    -ms-flex: 0 1 2em;
+    flex: 0 1 2em;
+  }
+
+  .full-header-text {
+    display: none;
+  }
+
+  .short-header-text {
+    display: inherit;
   }
 }

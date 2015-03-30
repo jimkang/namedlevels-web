@@ -11,13 +11,16 @@ body {
 
 #root {
   padding-left: 0;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
 }
 
 .level-table {
   text-shadow: white 1px 1px;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
 }
 
 .name-column {
@@ -30,12 +33,14 @@ body {
   flex: 0 0 5.5em;
   order: 2;
   padding-right: 1em;
+  text-align: center;
 }
 
 .level-number-column {
   flex: 0 0 5.5em;
   order: 1;
   padding-right: 1em;
+  text-align: center;
 }
 
 .column-header {
@@ -64,6 +69,14 @@ body {
   transition: opacity 1s;  
 }
 
+.full-header-text {
+  display: inherit;
+}
+
+.short-header-text {
+  display: none;
+}
+
 @media all and (max-width: 586px) {
   .column-header {
     max-height: 1em;
@@ -79,6 +92,14 @@ body {
   }
 
   .level-number-column {
-    flex: 0 1 1em;
+    flex: 0 1 2em;
+  }
+
+  .full-header-text {
+    display: none;
+  }
+
+  .short-header-text {
+    display: inherit;
   }
 }
