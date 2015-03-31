@@ -6,7 +6,7 @@ var renderHeaderRow = require('./render-header-row');
 var root;
 
 function render(classProfile) {
-  d3.select('#title').text(classProfile.className + ' TABLE');
+  d3.select('#title').text(classProfile.className + ' TABLE I.');
 
   if (!root) {
     root = d3.select('#root');
