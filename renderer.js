@@ -59,12 +59,7 @@ function renderFooter(classProfile) {
 }
 
 function getNameLevel(classProfile) {
-  for (var i = 0; classProfile.levelNames.length; ++i) {
-    if (classProfile.className === classProfile.levelNames[i]) {
-      break;
-    }
-  }
-  return i + 1;
+  return classProfile.levelNames.indexOf(classProfile.className) + 1;
 }
 
 module.exports = {
