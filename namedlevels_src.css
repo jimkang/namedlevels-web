@@ -7,10 +7,13 @@ body {
 
 #title {
   text-transform: uppercase;
+  font-weight: bold;
 }
 
 #root {
   padding-left: 0;
+  width: 100%;
+  max-width: 600px;
 }
 
 .level-table {
@@ -21,6 +24,18 @@ body {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
+}
+
+:not(#header-row).row:nth-of-type(6n-1) {
+  background-color: lightgray;
+}
+
+:not(#header-row).row:nth-of-type(6n) {
+  background-color: lightgray;
+}
+
+:not(#header-row).row:nth-of-type(6n+1) {
+  background-color: lightgray;
 }
 
 .name-column {
@@ -49,6 +64,10 @@ body {
   flex-direction: column;
   justify-content: flex-end;
   padding-bottom: 1em;
+}
+
+.column-header span {
+  font-weight: bold;
 }
 
 .centered-text {
