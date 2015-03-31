@@ -13,6 +13,11 @@ function render(classProfile) {
     root = d3.select('#root');
   }
 
+  d3.select('.book-page').classed({
+    hidden: false,
+    revealed: true
+  });
+
   var rows = profileToRows(classProfile);
 
   renderHeaderRow(root, classProfile);
