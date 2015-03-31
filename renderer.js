@@ -2,11 +2,12 @@ var d3 = require('./lib/d3-small');
 var profileToRows = require('./profile-to-rows');
 var accessor = require('accessor');
 var renderHeaderRow = require('./render-header-row');
+var getMasterLevelHpGain = require('./get-master-level-hp-gain');
 
 var root;
 
 function render(classProfile) {
-  d3.select('#title').text(classProfile.className + ' TABLE I.');
+  d3.select('#title').text(classProfile.pluralOfName + ' TABLE I.');
 
   if (!root) {
     root = d3.select('#root');
@@ -22,6 +23,8 @@ function render(classProfile) {
   rowElements.enter().append('tr').classed('row', true).each(addRowCells)
   rowElements.each(updateRowCells);
   fadeAndRemove(rowElements.exit());
+
+  renderFooter(classProfile);
 }
 
 function addRowCells() {
@@ -45,6 +48,23 @@ function fadeAndRemove(selection) {
     .classed('fade-out', true)
     .transition().delay(500)
     .remove();
+}
+
+function renderFooter(classProfile) {
+  d3.select('#footnotes').text(
+    classProfile.pluralOfName + ' gain ' +
+    getMasterLevelHpGain(classProfile.hitDie) +
+    ' h.p. per level after the ' + getNameLevel(classProfile) + 'th.'
+  );
+}
+
+function getNameLevel(classProfile) {
+  for (var i = 0; classProfile.levelNames.length; ++i) {
+    if (classProfile.className === classProfile.levelNames[i]) {
+      break;
+    }
+  }
+  return i + 1;
 }
 
 module.exports = {

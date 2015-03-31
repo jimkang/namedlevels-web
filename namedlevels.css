@@ -19,6 +19,7 @@ body {
 
 .level-table {
   text-shadow: hsla(0, 0%, 100%, 0.3) 1px 1px;
+  margin-bottom: 1em;
 }
 
 .row {
