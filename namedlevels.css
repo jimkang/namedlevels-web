@@ -35,6 +35,14 @@ body {
   transition: opacity 0.3s;
 }
 
+.non-existent {
+  display: none;
+}
+
+.existent {
+  display: block;
+}
+
 #title {
   text-transform: uppercase;
   font-weight: bold;
@@ -138,17 +146,18 @@ body {
   opacity: 0;
 }
 
-.fade-in {
-  opacity: 1;
-  transition: opacity 1s;
-}
-
 .full-header-text {
   display: inherit;
 }
 
 .short-header-text {
   display: none;
+}
+
+.notification {
+  background-color: hsl(35, 5%, 100%);
+  padding: 1em;
+  border-radius: 0.5em;
 }
 
 @media all and (max-width: 586px) {

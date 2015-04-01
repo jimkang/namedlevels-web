@@ -51,3 +51,8 @@ switch-index-to-production:
 
 test:
 	node tests/profile-to-rows-tests.js
+
+deploy-to-production-repo: css build switch-index-to-production
+	cp namedlevels.js ../namedlevels && \
+	cp namedlevels.css ../namedlevels && \
+	cp index.html ../namedlevels
