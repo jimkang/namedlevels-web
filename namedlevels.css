@@ -1,6 +1,9 @@
 body {
   font-family: futura, 'helvetica neue', 'sans-serif';
-  background-color: #BA202C;
+  /*background-color: #1F52A1;*/
+  /*background-color: #ff7b00;*/
+  /*background-color: #7a4d31;*/
+  background-color: #ba202c;
   color: hsl(0, 0%, 30%);
   margin: 1em;
   display: -webkit-flex;
@@ -158,6 +161,44 @@ body {
   background-color: hsl(35, 5%, 100%);
   padding: 1em;
   border-radius: 0.5em;
+}
+
+.form {
+  color: white;
+  padding: 1em;
+  border-radius: 0.5em;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 2em;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.form input {
+  width: 16em;
+  border-radius: 1em;
+  height: 2em;
+  padding: 0.25em;
+  font-size: 1.1em;
+  text-align: center;
+  background-color: hsl(0, 0%, 92%);
+}
+
+.button {
+  background-color: hsla(0, 0%, 0%, 0.22);
+  padding: 0.6em;
+  padding-left: 0.8em;
+  border-radius: 1.7em;
+  height: 1.8em;
+  font-size: 1.15em;
+  line-height: 1.8em;
+  width: 1.8em;
+  margin-top: 0.8em;
 }
 
 @media all and (max-width: 586px) {
