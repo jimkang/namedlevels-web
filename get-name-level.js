@@ -1,5 +1,10 @@
 function getNameLevel(classProfile) {
-  return classProfile.levelNames.indexOf(classProfile.className) + 1;
+  var lowerCaseClassNames = classProfile.levelNames.map(lowerCaseIt);
+  return lowerCaseClassNames.indexOf(classProfile.className.toLowerCase()) + 1;
+}
+
+function lowerCaseIt(s) {
+  return s.toLowerCase();
 }
 
 module.exports = getNameLevel;
