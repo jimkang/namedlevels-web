@@ -42,3 +42,12 @@ test('Handle null', function handleNull(t) {
     );
   }
 });
+
+test('Allow periods', function periods(t) {
+  t.plan(1);
+  t.equal(
+    sanitizeClassSegment('Dr. Wily'),
+    'Dr. Wily',
+    'Periods are OK.'
+  );
+});

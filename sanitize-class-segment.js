@@ -1,4 +1,4 @@
-var badCharsRegex = /[^\w\d-\s]/g;
+var badCharsRegex = /[^\w\d-\s\.]/g;
 
 function sanitizeClassSegment(raw) {
   if (!raw) {
