@@ -175,7 +175,7 @@ body {
   -webkit-order: 4;
   -ms-flex-order: 4;
   order: 4;
-  text-align: right;
+  text-align: center;
 }
 
 .column-header {
@@ -267,15 +267,16 @@ body {
 
   .book-page {
     padding-left: 2em;
+    padding-top: 0;
+  }
+
+  #title {
+    margin-top: 0.2em;
   }
 
   .column-header {
-    max-height: 1em;
-    min-height: 1em;
-  }
-
-  .hit-dice-column {
-    display: none;
+    max-height: 2em;
+    min-height: 2em;
   }
 
   .level-number-column .column-header {
@@ -294,5 +295,32 @@ body {
 
   .short-header-text {
     display: inherit;
+  }
+
+  .xp-column-title {
+    display: none;
+  }
+
+  .xp-low-end-column {
+    display: none;
+  }
+
+  .xp-range-divider-column {
+    display: none;
+  }
+
+  .xp-high-end-column {
+    display: none;
+  }
+}
+
+@media all and (max-width: 480px) {
+  .column-header {
+    max-height: 1em;
+    min-height: 1em;
+  }
+
+  .hit-dice-column {
+    display: none;
   }
 }

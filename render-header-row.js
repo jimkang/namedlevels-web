@@ -16,7 +16,7 @@ function renderHeaderRow(root, classProfile) {
     {
       columnClass: 'hit-dice-column',
       text: classProfile.hitDie + '-Sided Dice for Accumulated Hit Points',
-      shortText: 'Hit Dice (' + classProfile.hitDie + ')'
+      shortText: 'Hit Dice (d' + classProfile.hitDie + ')'
     },
     {
       columnClass: 'level-number-column',
