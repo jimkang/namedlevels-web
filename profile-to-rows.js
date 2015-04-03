@@ -13,7 +13,8 @@ function profileToRows(profile) {
       hd: getHitDiceForLevel(
         profile.startingHD, profile.hitDie, i + 1, nameLevel, 
         profile.gainsHDForever
-      )
+      ),
+      xpRange: [22500 * i, 22500 * (i + 1)]
     };
   }
 

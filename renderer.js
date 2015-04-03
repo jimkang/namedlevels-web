@@ -39,6 +39,9 @@ function addRowCells() {
   row.append('td').classed('level-number-column', true);
   row.append('td').classed('hit-dice-column', true);
   row.append('td').classed('name-column', true);
+  row.append('td').classed('xp-low-end-column', true);
+  row.append('td').classed('xp-range-divider-column', true);
+  row.append('td').classed('xp-high-end-column', true);
 }
 
 function updateRowCells(d) {
@@ -47,6 +50,9 @@ function updateRowCells(d) {
   row.select('.level-number-column').text(d.levelNumber);
   row.select('.hit-dice-column').text(d.hd);
   row.select('.name-column').text(d.name);
+  row.select('.xp-low-end-column').text(d.xpRange[0]);
+  row.select('.xp-range-divider-column').html('&mdash;');
+  row.select('.xp-high-end-column').text(d.xpRange[1]);
 }
 
 function fadeAndRemove(selection) {

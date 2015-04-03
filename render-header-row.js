@@ -23,6 +23,11 @@ function renderHeaderRow(root, classProfile) {
       text: 'Experience Level',
       shortText: 'Level'
     },
+    {
+      columnClass: 'xp-column-title',
+      text: 'Experience Points',
+      shortText: 'XP'
+    }
   ];
 
   headerSpecs.map(addRowOpt).forEach(renderColumnHeader);

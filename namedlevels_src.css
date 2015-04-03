@@ -18,7 +18,7 @@ body {
   background-color: hsl(35, 10%, 97%);
   background-image:url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZlcnNpb249JzEuMScgd2lkdGg9JzQwMCcgaGVpZ2h0PSc0MDAnPgoJPGRlZnMgaWQ9J2RlZnM0Jz4KCQk8ZmlsdGVyIGNvbG9yLWludGVycG9sYXRpb24tZmlsdGVycz0nc1JHQicgaWQ9J2ZpbHRlcjMxMTUnPgoJCQk8ZmVUdXJidWxlbmNlIHR5cGU9J2ZyYWN0YWxOb2lzZScgbnVtT2N0YXZlcz0nMycgYmFzZUZyZXF1ZW5jeT0nMC43JyBpZD0nZmVUdXJidWxlbmNlMzExNycgLz4KCQkJPGZlQ29sb3JNYXRyaXggcmVzdWx0PSdyZXN1bHQ1JyB2YWx1ZXM9JzEgMCAwIDAgMCAwIDEgMCAwIDAgMCAwIDEgMCAwIDAgMCAwIDYgLTMuMjQ4ICcgaWQ9J2ZlQ29sb3JNYXRyaXgzMTE5JyAvPgoJCQk8ZmVDb21wb3NpdGUgaW4yPSdyZXN1bHQ1JyBvcGVyYXRvcj0naW4nIGluPSdTb3VyY2VHcmFwaGljJyByZXN1bHQ9J3Jlc3VsdDYnIGlkPSdmZUNvbXBvc2l0ZTMxMjEnIC8+CgkJCTxmZU1vcnBob2xvZ3kgaW49J3Jlc3VsdDYnIG9wZXJhdG9yPSdkaWxhdGUnIHJhZGl1cz0nMycgcmVzdWx0PSdyZXN1bHQzJyBpZD0nZmVNb3JwaG9sb2d5MzEyMycgLz4KCQk8L2ZpbHRlcj4KCTwvZGVmcz4KCTxyZWN0IHdpZHRoPScxMDAlJyBoZWlnaHQ9JzEwMCUnIHg9JzAnIHk9JzAnIGlkPSdyZWN0Mjk4NScgZmlsbD0nI2QwZDBkMCcvPiAgICAgCgk8cmVjdCB3aWR0aD0nMTAwJScgaGVpZ2h0PScxMDAlJyB4PScwJyB5PScwJyBpZD0ncmVjdDI5ODUnIHN0eWxlPSdmaWxsOiNlZWVlZWU7ZmlsdGVyOnVybCgjZmlsdGVyMzExNSknIC8+Cjwvc3ZnPg==');
   width: 100%;
-  max-width: 600px;
+  max-width: 640px;
   box-shadow: 4px 4px hsla(30, 30%, 30%, 0.3);
   padding-left: 1.2em;
   padding-right: 1.2em;
@@ -51,7 +51,6 @@ body {
 #root {
   padding-left: 0;
   width: 100%;
-  max-width: 600px;
 }
 
 .level-table {
@@ -94,7 +93,41 @@ body {
   flex: 0 0 5.5em;
   order: 1;
   padding-right: 1em;
+  text-align: center;  
+}
+
+.xp-low-end-column {
+  flex: 0 0 5.5em;
+  order: 4;
+  padding-right: 0.2em;
+  text-align: right;
+  font-size: smaller;
+  align-self: center;
+}
+
+.xp-range-divider-column {
+  flex: 0 0 0.6em;
+  order: 5;
+  padding: 0;
   text-align: center;
+  font-size: smaller;
+  align-self: center;
+}
+
+.xp-high-end-column {
+  flex: 0 0 5.5em;
+  order: 6;
+  padding-left: 0.2em;
+  text-align: left;
+  font-size: smaller;
+  align-self: center;
+}
+
+.xp-column-title {
+  flex: 0 0 10.6em;
+  order: 4;
+  text-align: left;
+  align-self: center;
 }
 
 .column-header {
