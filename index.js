@@ -19,10 +19,12 @@ router.route();
 lookupForm.setUp();
 
 function index() {
-  console.log('Index!');
+  lookupForm.updateLookupInstructions(false);
 }
 
 function getClass(base) {
+  lookupForm.updateLookupInstructions(true);
+
   makeRequest(
     {
       url: baseAPIURL + 'class/' + base,

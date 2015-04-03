@@ -35,6 +35,15 @@ function focusOnLookupField() {
   setTimeout(el.focus.bind(el), 500);
 }
 
+function updateLookupInstructions(classSpecified) {
+  var message = '(L) Look up another character class:';
+  if (!classSpecified) {
+    message = '(L) Look up a character class:';
+  }
+  d3.select('#lookup-instructions').text(message);
+}
+
 module.exports = {
-  setUp: setUp
+  setUp: setUp,
+  updateLookupInstructions: updateLookupInstructions
 };
