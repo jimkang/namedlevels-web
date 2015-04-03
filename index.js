@@ -2,7 +2,8 @@ var makeRequest = require('basic-browser-request');
 var renderer = require('./renderer');
 var createRouter = require('./router').create;
 var notificationRenderer = require('./notification-renderer');
-
+var d3 = require('./lib/d3-small');
+var lookupForm = require('./lookup-form');
 var baseAPIURL = 'http://192.241.250.38:8080/';
 // var baseAPIURL = 'http://localhost:8080/';
 
@@ -14,6 +15,8 @@ var router = createRouter({
 });
 
 router.route();
+
+lookupForm.setUp();
 
 function index() {
   console.log('Index!');
@@ -40,8 +43,4 @@ function renderClass(error, classProfile) {
     console.log(classProfile);
     renderer.render(classProfile);
   }
-}
-
-function renderError(error) {
-
 }
