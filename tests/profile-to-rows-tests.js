@@ -1,6 +1,7 @@
 var test = require('tape');
 var profileToRows = require('../profile-to-rows');
 var _ = require('lodash');
+var seedrandom = require('seedrandom');
 
 test('Converts a profile into rows of objects', function rows(t) {
   var profile = {
@@ -29,7 +30,8 @@ test('Converts a profile into rows of objects', function rows(t) {
       "The Number One Microwave of Spades (21st level)"
     ],
     "hitDie": 4,
-    "startingHD": 2
+    "startingHD": 2,
+    gainsHDForever: false
   };
 
   var expectedRows = [
@@ -163,12 +165,12 @@ test('Converts a profile into rows of objects', function rows(t) {
 
   t.plan(expectedRows.length);
 
-  var rows = profileToRows(profile);
+  var rows = profileToRows(profile, seedrandom(profile.className.toLowerCase()));
 
   expectedRows.forEach(checkRow);
 
   function checkRow(expected, i) {
-    t.deepEqual(rows[i], expected, 'Row is as expected');
+    t.deepEqual(_.omit(rows[i], 'xpRange'), expected, 'Row is as expected');
   }
 });
 

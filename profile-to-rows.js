@@ -1,10 +1,19 @@
 var getMasterLevelHpGain = require('./get-master-level-hp-gain');
 var getNameLevel = require('./get-name-level');
+var getXPBrackets = require('./get-xp-brackets');
 
-function profileToRows(profile) {
+function profileToRows(profile, random) {
   var hd = profile.startingHD;
   var nameLevel = getNameLevel(profile);
-  var rows = profile.levelNames.map(levelNameToRow);
+
+  // Using global seedrandom assumed to be included by <script> tag because it 
+  // does not browserify well.
+
+  if (!random && typeof Math.seedrandom === 'function') {
+    random = new Math.seedrandom(profile.className.toLowerCase());
+  }
+
+  var xpBrackets = getXPBrackets(profile, random);
 
   function levelNameToRow(levelName, i) {
     return {
@@ -14,11 +23,11 @@ function profileToRows(profile) {
         profile.startingHD, profile.hitDie, i + 1, nameLevel, 
         profile.gainsHDForever
       ),
-      xpRange: [22500 * i, 22500 * (i + 1)]
+      xpRange: xpBrackets[i]
     };
   }
 
-  return rows;
+  return profile.levelNames.map(levelNameToRow);
 }
 
 function getHitDiceForLevel(startingHD, hitDieType, level, nameLevel, gainsHDForever) {

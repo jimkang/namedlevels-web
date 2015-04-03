@@ -4,6 +4,7 @@ var accessor = require('accessor');
 var renderHeaderRow = require('./render-header-row');
 var getMasterLevelHpGain = require('./get-master-level-hp-gain');
 var getNameLevel = require('./get-name-level');
+var numeral = require('numeral');
 
 var root;
 
@@ -50,9 +51,9 @@ function updateRowCells(d) {
   row.select('.level-number-column').text(d.levelNumber);
   row.select('.hit-dice-column').text(d.hd);
   row.select('.name-column').text(d.name);
-  row.select('.xp-low-end-column').text(d.xpRange[0]);
+  row.select('.xp-low-end-column').text(numeral(d.xpRange[0]).format('0,0'));
   row.select('.xp-range-divider-column').html('&mdash;');
-  row.select('.xp-high-end-column').text(d.xpRange[1]);
+  row.select('.xp-high-end-column').text(numeral(d.xpRange[1]).format('0,0'));
 }
 
 function fadeAndRemove(selection) {
