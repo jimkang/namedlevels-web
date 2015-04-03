@@ -85,6 +85,12 @@ body {
   background-color: hsla(0, 0%, 80%, 0.5);
 }
 
+#header-row {
+  -webkit-align-items: flex-end;
+  -ms-flex-align: end;
+  align-items: flex-end;
+}
+
 .name-column {
   -webkit-flex: 2 0 12em;
   -ms-flex: 2 0 12em;
@@ -170,13 +176,9 @@ body {
   -ms-flex-order: 4;
   order: 4;
   text-align: left;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
 }
 
 .column-header {
-  min-height: 5.5em;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;

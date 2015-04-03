@@ -76,6 +76,10 @@ body {
   background-color: hsla(0, 0%, 80%, 0.5);
 }
 
+#header-row {
+  align-items: flex-end;
+}
+
 .name-column {
   flex: 2 0 12em;
   min-width: 200px;
@@ -127,11 +131,9 @@ body {
   flex: 0 0 10.6em;
   order: 4;
   text-align: left;
-  align-self: center;
 }
 
 .column-header {
-  min-height: 5.5em;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
