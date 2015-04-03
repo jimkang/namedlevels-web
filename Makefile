@@ -57,4 +57,5 @@ test:
 deploy-to-production-repo: css build switch-index-to-production
 	cp namedlevels.js ../namedlevels && \
 	cp namedlevels.css ../namedlevels && \
+	cp lib/seedrandom.min.js ../namedlevels/lib && \
 	cp index.html ../namedlevels
