@@ -3,6 +3,7 @@ var profileToRows = require('./profile-to-rows');
 var accessor = require('accessor');
 var renderHeaderRow = require('./render-header-row');
 var getMasterLevelHpGain = require('./get-master-level-hp-gain');
+var getNameLevel = require('./get-name-level');
 
 var root;
 
@@ -61,10 +62,6 @@ function renderFooter(classProfile) {
     getMasterLevelHpGain(classProfile.hitDie) +
     ' h.p. per level after the ' + getNameLevel(classProfile) + 'th.'
   );
-}
-
-function getNameLevel(classProfile) {
-  return classProfile.levelNames.indexOf(classProfile.className) + 1;
 }
 
 module.exports = {

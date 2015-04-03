@@ -89,73 +89,73 @@ test('Converts a profile into rows of objects', function rows(t) {
     {
       "name": "Electromagnetic Radiation (10th level)",
       "levelNumber": 10,
-      "hd": "10+1",
+      "hd": "11",
       // "xpRange": "0-1000"
     },
     {
       "name": "Electromagnetic Radiation (11th level)",
       "levelNumber": 11,
-      "hd": "10+2",
+      "hd": "12",
       // "xpRange": "0-1000"
     },
     {
       "name": "Microwave",
       "levelNumber": 12,
-      "hd": "10+3",
+      "hd": "13",
       // "xpRange": "0-1000"
     },
     {
       "name": "Microwave of Diamonds",
       "levelNumber": 13,
-      "hd": "10+4",
+      "hd": "13+1",
       // "xpRange": "0-1000"
     },
     {
       "name": "Microwave of Hearts",
       "levelNumber": 14,
-      "hd": "10+5",
+      "hd": "13+2",
       // "xpRange": "0-1000"
     },
     {
       "name": "Microwave of Spades",
       "levelNumber": 15,
-      "hd": "10+6",
+      "hd": "13+3",
       // "xpRange": "0-1000"
     },
     {
       "name": "Microwave of Spades (16th level)",
       "levelNumber": 16,
-      "hd": "10+7",
+      "hd": "13+4",
       // "xpRange": "0-1000"
     },
     {
       "name": "High Microwave of Spades",
       "levelNumber": 17,
-      "hd": "10+8",
+      "hd": "13+5",
       // "xpRange": "0-1000"
     },
     {
       "name": "Grand Microwave of Spades",
       "levelNumber": 18,
-      "hd": "10+9",
+      "hd": "13+6",
       // "xpRange": "0-1000"
     },
     {
       "name": "The Number One Microwave of Spades",
       "levelNumber": 19,
-      "hd": "10+10",
+      "hd": "13+7",
       // "xpRange": "0-1000"
     },
     {
       "name": "The Number One Microwave of Spades (20th level)",
       "levelNumber": 20,
-      "hd": "10+11",
+      "hd": "13+8",
       // "xpRange": "0-1000"
     },
     {
       "name": "The Number One Microwave of Spades (21st level)",
       "levelNumber": 21,
-      "hd": "10+12",
+      "hd": "13+9",
       // "xpRange": "0-1000"
     }
   ];
