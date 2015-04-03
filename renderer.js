@@ -57,11 +57,14 @@ function fadeAndRemove(selection) {
 }
 
 function renderFooter(classProfile) {
-  d3.select('#footnotes').text(
-    classProfile.pluralOfName + ' gain ' +
-    getMasterLevelHpGain(classProfile.hitDie) +
-    ' h.p. per level after the ' + getNameLevel(classProfile) + 'th.'
-  );
+  var hdMessage = '';
+  if (!classProfile.gainsHDForever) {
+    hdMessage = classProfile.pluralOfName + ' gain ' +
+      getMasterLevelHpGain(classProfile.hitDie) +
+    ' h.p. per level after the ' + getNameLevel(classProfile) + 'th.';
+  }
+
+  d3.select('#footnotes').text(hdMessage);
 }
 
 module.exports = {

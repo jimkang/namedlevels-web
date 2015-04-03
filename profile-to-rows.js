@@ -11,7 +11,8 @@ function profileToRows(profile) {
       name: levelName,
       levelNumber: i + 1,
       hd: getHitDiceForLevel(
-        profile.startingHD, profile.hitDie, i + 1, nameLevel
+        profile.startingHD, profile.hitDie, i + 1, nameLevel, 
+        profile.gainsHDForever
       )
     };
   }
@@ -19,13 +20,18 @@ function profileToRows(profile) {
   return rows;
 }
 
-function getHitDiceForLevel(startingHD, hitDieType, level, nameLevel) {
-  var hd = (startingHD + Math.min(level, nameLevel) - 1).toString();
-  var levelsPastNameLevel = level - nameLevel;
-  if (levelsPastNameLevel > 0) {
-    hd += ('+' + getMasterLevelHpGain(hitDieType) * levelsPastNameLevel);
+function getHitDiceForLevel(startingHD, hitDieType, level, nameLevel, gainsHDForever) {
+  if (gainsHDForever) {
+    return (startingHD + level - 1).toString();
   }
-  return hd;
+  else {
+    var hd = (startingHD + Math.min(level, nameLevel) - 1).toString();
+    var levelsPastNameLevel = level - nameLevel;
+    if (levelsPastNameLevel > 0) {
+      hd += ('+' + getMasterLevelHpGain(hitDieType) * levelsPastNameLevel);
+    }
+    return hd;
+  }
 }
 
 module.exports = profileToRows;

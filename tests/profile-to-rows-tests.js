@@ -1,5 +1,6 @@
 var test = require('tape');
 var profileToRows = require('../profile-to-rows');
+var _ = require('lodash');
 
 test('Converts a profile into rows of objects', function rows(t) {
   var profile = {
@@ -168,5 +169,50 @@ test('Converts a profile into rows of objects', function rows(t) {
 
   function checkRow(expected, i) {
     t.deepEqual(rows[i], expected, 'Row is as expected');
+  }
+});
+
+test('Respects gainsHDForever', function hdForever(t) {  
+  var profile = {
+    "className": "Vole",
+    "pluralOfName": "Voles",
+    "levelNames": [
+      "Microtus Ochrogaster",
+      "Microtus Richardsoni",
+      "Arvicola Amphibius",
+      "Prairie Vole",
+      "Grasshopper Mouse",
+      "Red-Backed Mouse",
+      "Redback Vole",
+      "Microtus Pennsylvaticus",
+      "Meadow Vole",
+      "Richardson Vole",
+      "Richardson Vole (11th level)",
+      "Richardson Vole (12th level)",
+      "Vole",
+      "Vole Knight",
+      "Vole Lord",
+      "Vole Supreme",
+      "Vole Supreme (17th level)",
+      "High Vole Supreme",
+      "Principal Vole Supreme",
+      "The Great Vole Supreme",
+      "The Great Vole Supreme (21st level)",
+      "The Great Vole Supreme (22nd level)"
+    ],
+    "hitDie": 4,
+    "startingHD": 2,
+    "gainsHDForever": true
+  };
+
+  t.plan(profile.levelNames.length);
+
+  var results = profileToRows(profile);
+  var resultHDs = _.pluck(results, 'hd');
+
+  resultHDs.forEach(checkHD);
+
+  function checkHD(resultHD, i) {
+    t.equal(resultHD, (i + 2).toString(), 'HD for level ' + i + ' is correct.');
   }
 });

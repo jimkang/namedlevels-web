@@ -42,7 +42,6 @@ function renderClass(error, classProfile) {
   }
   else {
     notificationRenderer.hideNotification();
-    console.log(classProfile);
     renderer.render(classProfile);
   }
 }
