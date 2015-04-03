@@ -1,16 +1,18 @@
 var d3 = require('./lib/d3-small');
 var createStrokeRouter = require('strokerouter', d3.event);
 var createSimpleScroll = require('simplescroll');
+var sanitizeClassSegment = require('./sanitize-class-segment');
 
 var simpleScroll = createSimpleScroll({
   d3: d3
 });
 
 function goToClass() {
-  var nextClass = d3.select('#lookup-class').node().value;
-  // TODO: validate.
-  location.hash = '/class/' + nextClass;
-  simpleScroll.scrollTo(0, 500);
+  var nextClass = sanitizeClassSegment(d3.select('#lookup-class').node().value);
+  if (nextClass) {
+    location.hash = '/class/' + nextClass;
+    simpleScroll.scrollTo(0, 500);
+  }
 }
 
 function setUp() {
