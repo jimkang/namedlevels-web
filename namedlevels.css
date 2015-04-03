@@ -260,6 +260,25 @@ body {
   cursor: pointer;
 }
 
+.credits {
+  font-size: smaller;
+  color: hsla(0, 0%, 100%, 0.9);
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
+a {
+  text-decoration: none;
+}
+
+a {
+  font-weight: bold;
+  background-color: hsla(0, 0%, 0%, 0.2);
+  color: #fff;
+  padding: 0.2em;
+  border-radius: 0.5em;
+}
+
 @media all and (max-width: 586px) {
   body {
     margin: 0;
