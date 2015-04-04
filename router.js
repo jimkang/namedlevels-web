@@ -6,7 +6,7 @@ function createRouter(opts) {
   }
 
   function route(e) {
-    var hashParts = location.hash.slice(2).split('/');
+    var hashParts = window.location.hash.slice(2).split('/');
     if (hashParts.length > 1) {
       var responder = routes[hashParts[0]];
       if (responder) {
