@@ -83,49 +83,78 @@ test('Generates XP brackets', function basicTest(t) {
     ],
     [
       1085001,
-      1300000
+      1335000
     ],
     [
-      1300001,
-      1560000
+      1335001,
+      1585000
     ],
     [
-      1560001,
-      1870000
+      1585001,
+      1835000
     ],
     [
-      1870001,
-      2180000
+      1835001,
+      2085000
     ],
     [
-      2180001,
-      2490000
+      2085001,
+      2335000
     ],
     [
-      2490001,
-      2800000
+      2335001,
+      2585000
     ],
     [
-      2800001,
-      3110000
+      2585001,
+      2835000
     ],
     [
-      3110001,
-      3420000
+      2835001,
+      3085000
     ],
     [
-      3420001,
-      3730000
+      3085001,
+      3335000
     ],
     [
-      3730001,
-      4040000
+      3335001,
+      3585000
     ]
   ];
-
+  
   var brackets = getXPBrackets(
     profile, seedrandom(profile.className.toLowerCase())
   );
 
   t.deepEqual(brackets, expectedBrackets);
+});
+
+test('No step should be over 500K', function stepLimit(t) {
+  t.plan(20);
+  
+  var profile = {
+    "className": "Web Developer",
+    "levelNames": [
+      "placeholder", "placeholder", "placeholder", "placeholder", "placeholder",
+      "placeholder", "placeholder", "placeholder", "placeholder", "placeholder",
+      "Web Developer", "placeholder", "placeholder", "placeholder", "placeholder",
+      "placeholder", "placeholder", "placeholder", "placeholder", "placeholder"
+    ],
+    "hitDie": 6,
+    "startingHD": 1,
+    gainsHDForever: false
+  };
+
+  var brackets = getXPBrackets(
+    profile, seedrandom(profile.className.toLowerCase())
+  );
+
+  brackets.forEach(checkBracketSpanIsUnder500K);
+
+  function checkBracketSpanIsUnder500K(bracket) {
+    t.ok(bracket[1] - bracket[0] <= 500000, 
+      'Every bracket is under 500K:' +  bracket[0] + ' to ' + bracket[1]
+    );
+  }
 });

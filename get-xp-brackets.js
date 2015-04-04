@@ -11,11 +11,11 @@ function getXPBrackets(profile, random) {
   var limits = [level1Limit];
   var lastLimit;
 
-  while (limits.length <= nameLevel) {
+  while (limits.length < nameLevel && getLastLimitStepSize(limits) < 250000) {
     var span = 1 + probable.rollDie(2);
     if (limits.length + span > nameLevel) {
-      // Geometric growth should stop at either name level or 1-2 levels after.
-      span = nameLevel - limits.length + probable.roll(3);
+      // Geometric growth should stop at name level.
+      span = nameLevel - limits.length;
     }
     lastLimit = limits[limits.length - 1];
     limits = limits.concat(getLimitsForSpanOfLevels(lastLimit, span, probable));
@@ -33,6 +33,15 @@ function getXPBrackets(profile, random) {
   );
 
   return limits.map(rangeFromLimit);
+}
+
+function getLastLimitStepSize(limits) {
+  var size = 0;
+  var len = limits.length;
+  if (len > 1) {
+    size = limits[len - 1] - limits[len - 2];
+  }
+  return size;
 }
 
 function getLevel1Limit(profile, probable) {
