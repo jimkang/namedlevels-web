@@ -30,7 +30,7 @@ function getClass(base) {
     {
       url: baseAPIURL + 'class/' + base,
       method: 'GET',
-      timeLimit: 5 * 1000
+      timeLimit: 20 * 1000
     },
     renderClass
   );
