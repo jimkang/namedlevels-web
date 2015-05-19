@@ -1,3 +1,5 @@
+var _ = require('lodash');
+
 function createRouter(opts) {
   var routes;
 
@@ -6,7 +8,8 @@ function createRouter(opts) {
   }
 
   function route(e) {
-    var hashParts = window.location.hash.slice(2).split('/');
+    var hash = getHash(window);
+    var hashParts = _.compact(hash.split('/'));
     if (hashParts.length > 1) {
       var responder = routes[hashParts[0]];
       if (responder) {
@@ -26,6 +29,12 @@ function createRouter(opts) {
   return {
     route: route
   };
+}
+
+// From Backbone router:
+function getHash(window) {
+  var match = window.location.href.match(/#(.*)$/);
+  return match ? match[1] : '';
 }
 
 module.exports = {
