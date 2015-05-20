@@ -39,7 +39,7 @@ function renderError(error) {
       'Try again in a few moments!'
   }
 
-  d3.select('#error-box')
+  d3.select('#message-box')
     .text(message)
     .classed({
       'non-existent': false,
@@ -50,7 +50,7 @@ function renderError(error) {
 }
 
 function hideNotification() {
-  d3.select('#error-box')
+  d3.select('#message-box')
     .classed({
       'non-existent': true,
       hidden: true,
