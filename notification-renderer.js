@@ -39,6 +39,10 @@ function renderError(error) {
       'Try again in a few moments!'
   }
 
+  showMessage(message);
+}
+
+function showMessage(message) {
   d3.select('#message-box')
     .text(message)
     .classed({
@@ -49,7 +53,7 @@ function renderError(error) {
     });
 }
 
-function hideNotification() {
+function hideMessage() {
   d3.select('#message-box')
     .classed({
       'non-existent': true,
@@ -61,5 +65,5 @@ function hideNotification() {
 
 module.exports = {
   renderError: renderError,
-  hideNotification: hideNotification
+  hideMessage: hideMessage
 };

@@ -43,7 +43,7 @@ function renderClass(error, classProfile) {
     notificationRenderer.renderError(error);
   }
   else {
-    notificationRenderer.hideNotification();
+    notificationRenderer.hideMessage();
     renderer.render(classProfile);
   }
 }
