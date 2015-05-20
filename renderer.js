@@ -15,7 +15,7 @@ function render(classProfile) {
     root = d3.select('#root');
   }
 
-  d3.select('.book-page').classed({
+  d3.select('#class-page').classed({
     hidden: false,
     revealed: true
   });

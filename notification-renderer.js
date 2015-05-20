@@ -65,5 +65,6 @@ function hideMessage() {
 
 module.exports = {
   renderError: renderError,
-  hideMessage: hideMessage
+  hideMessage: hideMessage,
+  showMessage: showMessage
 };

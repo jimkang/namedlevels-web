@@ -26,6 +26,7 @@ function index() {
 
 function getClass(base) {
   lookupForm.updateLookupInstructions(true);
+  setTimeout(showWaitingMessage, 250);
 
   makeRequest(
     {
@@ -35,6 +36,14 @@ function getClass(base) {
     },
     renderClass
   );
+
+  function showWaitingMessage() {
+    if (d3.select('#class-page').classed('hidden')) {
+      notificationRenderer.showMessage(
+        'Furiously flipping around for the ' + _.capitalize(base) + ' page…'
+      );
+    }
+  }
 }
 
 function renderClass(error, classProfile) {
