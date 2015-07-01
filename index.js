@@ -1,23 +1,20 @@
 var makeRequest = require('basic-browser-request');
 var renderer = require('./renderer');
-var createRouter = require('./router').create;
 var notificationRenderer = require('./notification-renderer');
 var d3 = require('./lib/d3-small');
 var lookupForm = require('./lookup-form');
 var _ = require('lodash');
+var director = require('director');
 
 var baseAPIURL = 'http://192.241.250.38:8080/';
 // var baseAPIURL = 'http://localhost:8080/';
 
-var router = createRouter({
-  routes: {
-    class: getClass,
-    defaultResponder: index
-  }
-});
+var routes = {
+  '/class/:base': getClass,
+  '/': index
+};
 
-router.route();
-
+director.Router(routes).init();
 lookupForm.setUp();
 
 function index() {
