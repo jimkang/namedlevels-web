@@ -1,4 +1,3 @@
-var d3 = require('./lib/d3-small');
 var createStrokeRouter = require('strokerouter', d3.event);
 var createSimpleScroll = require('simplescroll');
 var sanitizeClassSegment = require('./sanitize-class-segment');

@@ -1,4 +1,3 @@
-var d3 = require('./lib/d3-small');
 var profileToRows = require('./profile-to-rows');
 var accessor = require('accessor');
 var renderHeaderRow = require('./render-header-row');

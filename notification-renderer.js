@@ -1,4 +1,3 @@
-var d3 = require('./lib/d3-small');
 var probable = require('probable');
 
 var randomEncounterTable = probable.createRangeTableFromDict({

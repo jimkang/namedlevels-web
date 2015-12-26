@@ -20,42 +20,26 @@ smash-debug: $(D3_LIBRARY_FILES)
 	node_modules/.bin/smash $(D3_LIBRARY_FILES) > lib/d3-small.js
 
 run: css
-	wzrd index.js -- \
-		-d \
-		-x idmaker \
-		-x lodash \
-		-x basic-browser-request
-
-pch: smash # smash-debug
-	node_modules/.bin/browserify \
-		lib/d3-small.js \
-		-r idmaker \
-		-r lodash \
-		-r basic-browser-request \
-		-o pch.js
+	wzrd app.js:index.js -- \
+		-d
 
 build: smash
-	$(BROWSERIFY) index.js | $(UGLIFY) -c -m -o namedlevels.js
+	$(BROWSERIFY) app.js | $(UGLIFY) -c -m -o index.js
 
 css:
 	$(MYTH) namedlevels_src.css namedlevels.css
-
-DEVTAGS = <script\ src="pch.js"><\/script><script\ src="index.js"><\/script>
-PRODUCTIONTAGS = <script\ src="namedlevels.js"><\/script>
-
-switch-index-to-dev:
-	sed 's/$(PRODUCTIONTAGS)/$(DEVTAGS)/' index.html | tee index.html
-
-switch-index-to-production:
-	sed 's/$(DEVTAGS)/$(PRODUCTIONTAGS)/' index.html | tee index.html
 
 test:
 	node tests/profile-to-rows-tests.js
 	node tests/sanitize-segment-tests.js
 	node tests/get-xp-brackets-tests.js
 
-deploy-to-production-repo: css build switch-index-to-production
-	cp namedlevels.js ../namedlevels && \
+run-production-style: build
+	python -m SimpleHTTPServer
+
+deploy-to-production-repo: css build
+	cp index.js ../namedlevels && \
 	cp namedlevels.css ../namedlevels && \
 	cp lib/seedrandom.min.js ../namedlevels/lib && \
+	cp lib/d3-small.js ../namedlevels/lib && \
 	cp index.html ../namedlevels
