@@ -5,7 +5,7 @@ var lookupForm = require('./lookup-form');
 var _ = require('lodash');
 var director = require('director');
 
-var baseAPIURL = 'http://192.241.250.38:8080/';
+var baseAPIURL = 'http://45.55.32.243:8080/';
 // var baseAPIURL = 'http://localhost:8080/';
 
 var routes = {
