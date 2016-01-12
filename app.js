@@ -4,33 +4,39 @@ var notificationRenderer = require('./notification-renderer');
 var lookupForm = require('./lookup-form');
 var _ = require('lodash');
 var director = require('director');
+var callNextTick = require('call-next-tick');
 
+var currentUrlClass;
 var baseAPIURL = 'http://45.55.32.243:8080/';
 // var baseAPIURL = 'http://localhost:8080/';
 
 var routes = {
-  '/class/:base': getClass,
-  '/': index
+  '/class/:base': getClass
 };
 
-director.Router(routes).init();
+var router = director.Router(routes);
+router.notfound = getClass;
+router.init();
+
 lookupForm.setUp();
 
-function index() {
-  lookupForm.updateLookupInstructions(false);
-}
-
 function getClass(base) {
+  currentUrlClass = base;
   lookupForm.updateLookupInstructions(true);
   setTimeout(showWaitingMessage, 250);
 
+  var apiURL = baseAPIURL + 'class/';
+  if (currentUrlClass) {
+    apiURL += currentUrlClass;
+  }
+
   makeRequest(
     {
-      url: baseAPIURL + 'class/' + base,
+      url: apiURL,
       method: 'GET',
       timeLimit: 20 * 1000
     },
-    renderClass
+    updateWithClass
   );
 
   function showWaitingMessage() {
@@ -42,13 +48,26 @@ function getClass(base) {
   }
 }
 
-function renderClass(error, classProfile) {
+function updateWithClass(error, classProfile) {
   if (error) {
     console.log(error);
     notificationRenderer.renderError(error);
   }
   else {
+    if (currentUrlClass !== classProfile.className.toLowerCase()) {
+      currentUrlClass = classProfile.className.toLowerCase();
+      syncURLToCurrentClass();
+    }
     notificationRenderer.hideMessage();
     renderer.render(classProfile);
+  }
+}
+
+function syncURLToCurrentClass() {
+  if (currentUrlClass) {
+    var newURL = location.protocol + '//' + location.host + location.pathname +
+      '#/' + 'class/' + currentUrlClass;
+
+    window.history.pushState(null, null, newURL);
   }
 }
