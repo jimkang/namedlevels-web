@@ -7,7 +7,7 @@ var director = require('director');
 var callNextTick = require('call-next-tick');
 
 var currentUrlClass;
-var baseAPIURL = 'http://45.55.32.243:8080/';
+var baseAPIURL = 'http://192.241.250.38:8080/';
 // var baseAPIURL = 'http://localhost:8080/';
 
 var routes = {
