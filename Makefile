@@ -1,3 +1,6 @@
+include config.mk
+
+HOMEDIR = $(shell pwd)
 D3SRC = node_modules/d3/src
 MYTH = node_modules/.bin/myth
 BROWSERIFY = node_modules/.bin/browserify
@@ -37,9 +40,9 @@ test:
 run-production-style: build
 	python -m SimpleHTTPServer
 
-deploy-to-production-repo: css build
-	cp index.js ../namedlevels && \
-	cp namedlevels.css ../namedlevels && \
-	cp lib/seedrandom.min.js ../namedlevels/lib && \
-	cp lib/d3-small.js ../namedlevels/lib && \
-	cp index.html ../namedlevels
+pushall: css build sync
+	git push origin master
+
+sync:
+	rsync -a $(HOMEDIR)/ $(USER)@$(SERVER):$(APPDIR) --exclude node_modules/ \
+		--omit-dir-times --no-perms

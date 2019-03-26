@@ -1,13 +1,14 @@
+/* global d3 */
+
 var makeRequest = require('basic-browser-request');
 var renderer = require('./renderer');
 var notificationRenderer = require('./notification-renderer');
 var lookupForm = require('./lookup-form');
 var _ = require('lodash');
 var director = require('director');
-var callNextTick = require('call-next-tick');
 
 var currentUrlClass;
-var baseAPIURL = 'http://162.243.21.88:8080/';
+var baseAPIURL = 'https://smidgeo.com/namedlevels-api/';
 // var baseAPIURL = 'http://localhost:8080/';
 
 var routes = {
