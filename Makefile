@@ -2,7 +2,6 @@ include config.mk
 
 HOMEDIR = $(shell pwd)
 D3SRC = node_modules/d3/src
-MYTH = node_modules/.bin/myth
 BROWSERIFY = node_modules/.bin/browserify
 UGLIFY = node_modules/.bin/uglifyjs
 
@@ -22,15 +21,12 @@ smash: $(D3_LIBRARY_FILES)
 smash-debug: $(D3_LIBRARY_FILES)
 	node_modules/.bin/smash $(D3_LIBRARY_FILES) > lib/d3-small.js
 
-run: css
+run:
 	wzrd app.js:index.js -- \
 		-d
 
 build: smash
 	$(BROWSERIFY) app.js | $(UGLIFY) -c -m -o index.js
-
-css:
-	$(MYTH) namedlevels_src.css namedlevels.css
 
 test:
 	node tests/profile-to-rows-tests.js
@@ -40,7 +36,7 @@ test:
 run-production-style: build
 	python -m SimpleHTTPServer
 
-pushall: css build sync
+pushall: build sync
 	git push origin master
 
 sync:
