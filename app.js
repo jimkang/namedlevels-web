@@ -53,8 +53,7 @@ function updateWithClass(error, classProfile) {
   if (error) {
     console.log(error);
     notificationRenderer.renderError(error);
-  }
-  else {
+  } else {
     if (currentUrlClass !== classProfile.className.toLowerCase()) {
       currentUrlClass = classProfile.className.toLowerCase();
       syncURLToCurrentClass();
@@ -66,8 +65,14 @@ function updateWithClass(error, classProfile) {
 
 function syncURLToCurrentClass() {
   if (currentUrlClass) {
-    var newURL = location.protocol + '//' + location.host + location.pathname +
-      '#/' + 'class/' + currentUrlClass;
+    var newURL =
+      location.protocol +
+      '//' +
+      location.host +
+      location.pathname +
+      '#/' +
+      'class/' +
+      currentUrlClass;
 
     window.history.pushState(null, null, newURL);
   }

@@ -3,18 +3,15 @@ function getMasterLevelHpGain(hitDie) {
 
   if (hitDie > 12) {
     gain = 4;
-  }
-  else if (hitDie > 8) {
+  } else if (hitDie > 8) {
     gain = 3;
-  }
-  else if (hitDie > 4) {
+  } else if (hitDie > 4) {
     gain = 2;
-  }
-  else {
+  } else {
     gain = 1;
   }
 
-  return gain;  
+  return gain;
 }
 
 module.exports = getMasterLevelHpGain;

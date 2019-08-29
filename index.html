@@ -1,50 +1,58 @@
 <html>
-<head>
-  <title>Named Levels</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
-  <meta charset="utf-8" />
-  <link rel="stylesheet" href="https://use.typekit.net/zbu4fal.css">
-  <link rel="stylesheet" href="namedlevels.css">
-</head>
-<body>
+  <head>
+    <title>Named Levels</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://use.typekit.net/zbu4fal.css" />
+    <link rel="stylesheet" href="namedlevels.css" />
+  </head>
+  <body>
+    <div
+      id="message-box"
+      class="notification hidden non-existent book-page"
+    ></div>
 
-<div id="message-box" class="notification hidden non-existent book-page">
-</div>
+    <section id="class-page" class="book-page hidden">
+      <p id="title"></p>
 
-<section id="class-page" class="book-page hidden">
-  <p id="title"></p>
+      <table id="root" class="level-table"></table>
 
-  <table id="root" class="level-table">
-  </table>
+      <div id="footnotes"></div>
+    </section>
 
-  <div id="footnotes">
-  </div>
-</section>
+    <div id="form-container">
+      <div id="lookup-form" class="form">
+        <p id="lookup-instructions">(L) Look up a character class:</p>
+        <input id="lookup-class" type="text" value="" />
+        <div id="go" class="button">Go.</div>
+      </div>
 
-<div id="form-container">
-  <div id="lookup-form" class="form">
-    <p id="lookup-instructions">(L) Look up a character class:</p>
-    <input id="lookup-class" type="text" value=""></input>
-    <div id="go" class="button">Go.</div>
-  </div>
+      <div id="random-form" class="form">
+        <a href="#"
+          ><div id="get-random-class-button" class="button">
+            Get a random class.
+          </div></a
+        >
+      </div>
+    </div>
 
-  <div id="random-form" class="form">
-    <a href="#"><div id="get-random-class-button" class="button">Get a random class.</div></a>
-  </div>
-</div>
+    <div class="credits">
+      <p>
+        Follow
+        <a class="shaded" href="https://twitter.com/namedlevels"
+          >@namedlevels</a
+        >
+        on Twitter for some levels in your feed!
+      </p>
+      <p>
+        Powered by
+        <a class="shaded" href="http://developer.wordnik.com/">Wordnik</a>. A
+        thing by Jim Kang.
+      </p>
+    </div>
 
-<div class="credits">
-  <p>
-    Follow <a class="shaded" href="https://twitter.com/namedlevels">@namedlevels</a> on Twitter for some levels in your feed!
-  </p>
-  <p>
-    Powered by <a class="shaded" href="http://developer.wordnik.com/">Wordnik</a>. A thing by Jim Kang.
-  </p>
-</div>
-
-<script src="lib/seedrandom.min.js"></script>
-<script src="lib/d3-small.js"></script>
-<script src="index.js"></script>
-
-</body>
+    <script src="lib/seedrandom.min.js"></script>
+    <script src="lib/d3-small.js"></script>
+    <script src="index.js"></script>
+  </body>
 </html>

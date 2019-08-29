@@ -42,3 +42,7 @@ pushall: build sync
 sync:
 	rsync -a $(HOMEDIR)/ $(USER)@$(SERVER):$(APPDIR) --exclude node_modules/ \
 		--omit-dir-times --no-perms
+
+prettier:
+	prettier --single-quote --write "**/*.js"
+

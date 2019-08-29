@@ -49,8 +49,7 @@ function getLevel1Limit(profile, probable) {
 
   if (profile.startingHD == 2) {
     level1BracketBase + 1;
-  }
-  else if (profile.startingHD == 3) {
+  } else if (profile.startingHD == 3) {
     level1BracketBase += 3;
   }
 
@@ -95,7 +94,7 @@ function getLimitsForMasterLevels(base, xpIncrease, howMany) {
     limits.push(lastLimit);
   }
 
-  return limits;  
+  return limits;
 }
 
 function lockToStep(n, step) {

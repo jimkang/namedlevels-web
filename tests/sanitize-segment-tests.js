@@ -30,11 +30,7 @@ test('Handle null', function handleNull(t) {
   t.doesNotThrow(runNullTests);
 
   function runNullTests() {
-    t.equal(
-      sanitizeClassSegment(null),
-      null,
-      'Returns null when given null.'
-    );
+    t.equal(sanitizeClassSegment(null), null, 'Returns null when given null.');
     t.equal(
       sanitizeClassSegment(undefined),
       undefined,
@@ -45,9 +41,5 @@ test('Handle null', function handleNull(t) {
 
 test('Allow periods', function periods(t) {
   t.plan(1);
-  t.equal(
-    sanitizeClassSegment('Dr. Wily'),
-    'Dr. Wily',
-    'Periods are OK.'
-  );
+  t.equal(sanitizeClassSegment('Dr. Wily'), 'Dr. Wily', 'Periods are OK.');
 });

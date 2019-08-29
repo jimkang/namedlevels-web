@@ -25,10 +25,15 @@ function render(classProfile) {
 
   renderHeaderRow(root, classProfile);
 
-  var rowElements = root.selectAll('.row:not(#header-row)')
+  var rowElements = root
+    .selectAll('.row:not(#header-row)')
     .data(rows, accessor('levelNumber'));
 
-  rowElements.enter().append('tr').classed('row', true).each(addRowCells);
+  rowElements
+    .enter()
+    .append('tr')
+    .classed('row', true)
+    .each(addRowCells);
   rowElements.each(updateRowCells);
   fadeAndRemove(rowElements.exit());
 
@@ -54,11 +59,13 @@ function updateRowCells(d) {
   row.select('.level-number-column').text(d.levelNumber);
   row.select('.hit-dice-column').text(d.hd);
   row.select('.name-column').text(d.name);
-  row.select('.xp-low-end-column')
+  row
+    .select('.xp-low-end-column')
     .text(numeral(d.xpRange[0]).format('0,0'))
     .classed('low-number', hasAllSmallNumber);
   row.select('.xp-range-divider-column').text('-');
-  row.select('.xp-high-end-column')
+  row
+    .select('.xp-high-end-column')
     .text(numeral(d.xpRange[1]).format('0,0'))
     .classed('low-number', hasAllSmallNumber);
 }
@@ -66,16 +73,21 @@ function updateRowCells(d) {
 function fadeAndRemove(selection) {
   selection
     .classed('fade-out', true)
-    .transition().delay(500)
+    .transition()
+    .delay(500)
     .remove();
 }
 
 function renderFooter(classProfile) {
   var hdMessage = '';
   if (!classProfile.gainsHDForever) {
-    hdMessage = classProfile.pluralOfName + ' gain ' +
+    hdMessage =
+      classProfile.pluralOfName +
+      ' gain ' +
       getMasterLevelHpGain(classProfile.hitDie) +
-    ' h.p. per level after the ' + getNameLevel(classProfile) + 'th.';
+      ' h.p. per level after the ' +
+      getNameLevel(classProfile) +
+      'th.';
   }
 
   d3.select('#footnotes').text(hdMessage);
