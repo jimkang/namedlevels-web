@@ -1,3 +1,5 @@
+/* global d3 */
+
 var profileToRows = require('./profile-to-rows');
 var accessor = require('accessor');
 var renderHeaderRow = require('./render-header-row');
@@ -26,7 +28,7 @@ function render(classProfile) {
   var rowElements = root.selectAll('.row:not(#header-row)')
     .data(rows, accessor('levelNumber'));
 
-  rowElements.enter().append('tr').classed('row', true).each(addRowCells)
+  rowElements.enter().append('tr').classed('row', true).each(addRowCells);
   rowElements.each(updateRowCells);
   fadeAndRemove(rowElements.exit());
 
@@ -39,9 +41,11 @@ function addRowCells() {
   row.append('td').classed('level-number-column', true);
   row.append('td').classed('hit-dice-column', true);
   row.append('td').classed('name-column', true);
-  row.append('td').classed('xp-low-end-column', true);
-  row.append('td').classed('xp-range-divider-column', true);
-  row.append('td').classed('xp-high-end-column', true);
+  var xpContainer = row.append('td').classed('xp-container', true);
+
+  xpContainer.append('div').classed('xp-range-divider-column', true);
+  xpContainer.append('div').classed('xp-high-end-column', true);
+  xpContainer.append('div').classed('xp-low-end-column', true);
 }
 
 function updateRowCells(d) {
@@ -50,9 +54,13 @@ function updateRowCells(d) {
   row.select('.level-number-column').text(d.levelNumber);
   row.select('.hit-dice-column').text(d.hd);
   row.select('.name-column').text(d.name);
-  row.select('.xp-low-end-column').text(numeral(d.xpRange[0]).format('0,0'));
-  row.select('.xp-range-divider-column').html('&mdash;');
-  row.select('.xp-high-end-column').text(numeral(d.xpRange[1]).format('0,0'));
+  row.select('.xp-low-end-column')
+    .text(numeral(d.xpRange[0]).format('0,0'))
+    .classed('low-number', hasAllSmallNumber);
+  row.select('.xp-range-divider-column').text('-');
+  row.select('.xp-high-end-column')
+    .text(numeral(d.xpRange[1]).format('0,0'))
+    .classed('low-number', hasAllSmallNumber);
 }
 
 function fadeAndRemove(selection) {
@@ -71,6 +79,10 @@ function renderFooter(classProfile) {
   }
 
   d3.select('#footnotes').text(hdMessage);
+}
+
+function hasAllSmallNumber(d) {
+  return d.xpRange[0] < 1000000 && d.xpRange[1] < 1000000;
 }
 
 module.exports = {
