@@ -29,7 +29,7 @@
     "d3": "^3.5.5",
     "director": "^1.2.8",
     "idmaker": "^0.1.1",
-    "lodash": "^3.6.0",
+    "lodash": "^4.17.13",
     "numeral": "^1.5.3",
     "probable": "^1.4.0",
     "simplescroll": "^1.0.0",
